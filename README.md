@@ -1,4 +1,4 @@
-# 🚀 Web App Speech To Text & Text To Speech (Spotify Style)
+# 🚀 Web App Speech To Text & Text To Speech
 
 Sistem konversi matriks bilangan (0-10), alfabet (A-Z), operator aritmatika dasar, serta kalimat kustom berbasis **Web Speech API (Client-Side)** dengan backend **Flask (Python)**. Interface aplikasi ini didesain menggunakan **Tailwind CSS** dengan mengusung tema *Synthwave / Spotify Premium Gradient* (Cyan-Purple-Pink).
 
