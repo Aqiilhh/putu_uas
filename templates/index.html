@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UAS - STT & TTS Team Collaboration</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="flex flex-col justify-between overflow-x-hidden selection:bg-[#f43f5e] selection:text-white">
+
+    <!-- Orb Blobs Background -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <!-- Top Navigation -->
+    <header class="w-full border-b border-white/10 px-6 py-5 md:px-12 flex justify-between items-center glass-header sticky top-0 z-50">
+        <div class="flex items-center gap-3">
+            <div class="logo-dot"></div>
+            <div class="text-xs font-semibold tracking-wider text-slate-300">UAS // KELOMPOK PANEL // IFB-306</div>
+        </div>
+        <div class="flex items-center gap-6">
+            <span class="badge-pill">TEAM COLLAB</span>
+        </div>
+    </header>
+
+    <!-- Main Section -->
+    <main class="w-full max-w-7xl mx-auto px-6 md:px-12 py-12 flex flex-col lg:flex-row gap-12 items-center justify-center flex-grow">
+
+        <!-- BAGIAN KIRI: Headline Typography -->
+        <div class="w-full lg:w-5/12 flex flex-col justify-center">
+            <div class="tag-label mb-4">✦ Web Speech API</div>
+            <div class="spotify-font headline-gradient text-5xl sm:text-6xl md:text-7xl lg:text-8xl select-none mb-6">
+                Speech<br>To Text<br><span class="headline-pink">&amp; Audio.</span>
+            </div>
+            <p class="desc-text border-l-2 border-pink-500/60 pl-4">
+                Perhitungan angka <span class="text-pink-300">(Dhea)</span>, alfabet A-Z <span class="text-pink-300">(Rizky Dwi)</span>, operator aritmatika <span class="text-pink-300">(Jihan)</span>, &amp; lirik kustom <span class="text-pink-300">(Rizky Aqil)</span>. Pemrosesan murni sisi client via Web API.
+            </p>
+
+            <!-- Stats Row -->
+            <div class="flex gap-6 mt-8">
+                <div class="stat-item">
+                    <span class="stat-num">26+</span>
+                    <span class="stat-label">Audio Chars</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-num">10+</span>
+                    <span class="stat-label">Numbers</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-num">6+</span>
+                    <span class="stat-label">Operators</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN KANAN: Interface Control Grid -->
+        <div class="w-full lg:w-7/12 grid grid-cols-1 gap-5">
+
+            <!-- PANEL 1: SPEECH TO TEXT (STT) -->
+            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between min-h-[150px] transition-all duration-300">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <span class="panel-label">Fitur 01 // Input Suara</span>
+                        <h3 class="spotify-font text-xl text-white tracking-tight mt-1">Speech To Text</h3>
+                    </div>
+                    <div id="statusDot" class="status-dot"></div>
+                </div>
+
+                <div class="flex items-center justify-between gap-4 mt-5">
+                    <p id="infoText" class="info-text">
+                        Klik tombol mic di kanan dan langsung bicara bersama kelompok
+                    </p>
+                    <button id="recordBtn" class="btn-mic cursor-pointer border-none outline-none">
+                        <i id="micIcon" class="fa-solid fa-microphone text-sm"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- PANEL 2: TEXT TO SPEECH -->
+            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between min-h-[150px] transition-all duration-300">
+                <div>
+                    <span class="panel-label">Fitur 02 // Input Teks Kustom</span>
+                    <h3 class="spotify-font text-xl text-white tracking-tight mt-1 mb-4">Text To Speech</h3>
+                </div>
+
+                <div class="flex gap-3 items-center">
+                    <input
+                        type="text"
+                        id="ttsInput"
+                        placeholder="Contoh: 1 tambah 2 sama dengan 3 atau 123 sayang semuanya..."
+                        class="tts-input flex-grow"
+                    >
+                    <button id="speakBtn" class="btn-speak cursor-pointer border-none outline-none">
+                        <i class="fa-solid fa-volume-high"></i> Bunyi
+                    </button>
+                </div>
+            </div>
+
+            <!-- PANEL 3: MONITOR DISPLAY -->
+            <div class="glass-card-result rounded-2xl p-6 flex flex-col justify-center min-h-[150px] transition-all duration-300">
+                <div>
+                    <span class="panel-label-gray">System Monitor // Output</span>
+                    <h3 class="spotify-font text-xl text-white tracking-tight mt-1 mb-3">Rendered Matrix</h3>
+
+                    <div id="resultText" class="spotify-font text-2xl md:text-3xl tracking-tight min-h-[40px] flex items-center result-text">
+                        <span class="text-slate-500 text-xs font-normal tracking-normal normal-case italic not-spotify">Awaiting live signal...</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full border-t border-white/10 px-6 md:px-12 py-5 text-center sm:text-left">
+        <div class="footer-text">LOG // CLIENT_SIDE_WEB_API // TEAM_DATASET_LOADED</div>
+        <div class="footer-text">&copy; 2026 ITENAS BANDUNG</div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

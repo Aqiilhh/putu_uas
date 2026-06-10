@@ -1,0 +1,431 @@
+/* ==========================================
+   UAS SPEECH TO TEXT & TEXT TO SPEECH
+   THEME: SPOTIFY-ELEGANT BLUE-PURPLE + PINK
+   ========================================== */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    min-height: 100vh;
+    background: #0a0a14;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+/* ==========================================
+   ANIMATED GRADIENT BACKGROUND
+   ========================================== */
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 80% 60% at 20% 10%, rgba(79, 70, 229, 0.35) 0%, transparent 60%),
+        radial-gradient(ellipse 70% 50% at 80% 90%, rgba(168, 85, 247, 0.3) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 80% at 50% 50%, rgba(30, 58, 138, 0.4) 0%, transparent 70%),
+        linear-gradient(160deg, #0d0d1f 0%, #0f0823 35%, #130b2b 65%, #0d0d1f 100%);
+    z-index: -2;
+    pointer-events: none;
+}
+
+/* ==========================================
+   FLOATING ORB BLOBS (LIKE SPOTIFY)
+   ========================================== */
+
+.orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.25;
+    z-index: -1;
+    pointer-events: none;
+    animation: floatOrb 12s ease-in-out infinite;
+}
+
+.orb-1 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, #6366f1, #4f46e5);
+    top: -150px;
+    left: -100px;
+    animation-delay: 0s;
+    animation-duration: 14s;
+}
+
+.orb-2 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, #a855f7, #7c3aed);
+    bottom: -100px;
+    right: -80px;
+    animation-delay: -5s;
+    animation-duration: 18s;
+}
+
+.orb-3 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, #ec4899, #db2777);
+    top: 40%;
+    left: 60%;
+    animation-delay: -9s;
+    animation-duration: 22s;
+    opacity: 0.12;
+}
+
+@keyframes floatOrb {
+    0%, 100% { transform: translate(0px, 0px) scale(1); }
+    33%       { transform: translate(30px, -40px) scale(1.08); }
+    66%       { transform: translate(-20px, 25px) scale(0.95); }
+}
+
+/* ==========================================
+   HEADER
+   ========================================== */
+
+.glass-header {
+    background: rgba(10, 10, 20, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.logo-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #818cf8, #e879f9);
+    box-shadow: 0 0 12px rgba(129, 140, 248, 0.8);
+    animation: pulse-dot 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+    0%, 100% { box-shadow: 0 0 8px rgba(129, 140, 248, 0.8); }
+    50%       { box-shadow: 0 0 20px rgba(232, 121, 249, 1); }
+}
+
+.badge-pill {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: #c4b5fd;
+    border: 1px solid rgba(167, 139, 250, 0.3);
+    padding: 4px 14px;
+    border-radius: 100px;
+    background: rgba(109, 40, 217, 0.15);
+    backdrop-filter: blur(8px);
+}
+
+/* ==========================================
+   TYPOGRAPHY
+   ========================================== */
+
+.spotify-font {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.0;
+}
+
+.headline-gradient {
+    background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 40%, #a5b4fc 70%, #818cf8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.headline-pink {
+    background: linear-gradient(135deg, #f472b6 0%, #ec4899 50%, #db2777 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.tag-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #f9a8d4;
+    background: rgba(244, 63, 94, 0.1);
+    border: 1px solid rgba(244, 63, 94, 0.25);
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 100px;
+}
+
+.desc-text {
+    font-size: 13px;
+    color: #94a3b8;
+    max-width: 380px;
+    font-weight: 500;
+    line-height: 1.75;
+    letter-spacing: -0.01em;
+}
+
+/* ==========================================
+   STATS
+   ========================================== */
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.stat-num {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    background: linear-gradient(135deg, #f472b6, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.03em;
+}
+
+.stat-label {
+    font-size: 10px;
+    font-weight: 500;
+    color: #64748b;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.stat-divider {
+    width: 1px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.08);
+    align-self: center;
+}
+
+/* ==========================================
+   GLASS CARDS
+   ========================================== */
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow:
+        0 4px 30px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(167, 139, 250, 0.2);
+    box-shadow:
+        0 8px 40px rgba(109, 40, 217, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+}
+
+.glass-card-result {
+    background: rgba(244, 63, 94, 0.04);
+    border: 1px solid rgba(244, 63, 94, 0.12);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow:
+        0 4px 30px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(244, 63, 94, 0.06);
+    transition: all 0.3s ease;
+}
+
+.glass-card-result:hover {
+    border-color: rgba(244, 63, 94, 0.25);
+    box-shadow:
+        0 8px 40px rgba(244, 63, 94, 0.15),
+        inset 0 1px 0 rgba(244, 63, 94, 0.08);
+    transform: translateY(-2px);
+}
+
+/* ==========================================
+   PANEL LABELS
+   ========================================== */
+
+.panel-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #f472b6;
+    display: block;
+}
+
+.panel-label-gray {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #64748b;
+    display: block;
+}
+
+/* ==========================================
+   STATUS DOT
+   ========================================== */
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease;
+}
+
+/* ==========================================
+   INFO TEXT
+   ========================================== */
+
+.info-text {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: #fda4af;
+    text-transform: uppercase;
+    line-height: 1.5;
+}
+
+/* ==========================================
+   BUTTONS
+   ========================================== */
+
+.btn-mic {
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1db954, #17a349);
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.25s ease;
+    box-shadow: 0 6px 20px rgba(29, 185, 84, 0.35);
+}
+
+.btn-mic:hover {
+    transform: scale(1.08);
+    box-shadow: 0 8px 28px rgba(29, 185, 84, 0.5);
+}
+
+.btn-mic:active {
+    transform: scale(0.95);
+}
+
+.btn-speak {
+    height: 48px;
+    padding: 0 22px;
+    border-radius: 100px;
+    background: linear-gradient(135deg, #7c3aed, #6d28d9);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    transition: all 0.25s ease;
+    box-shadow: 0 6px 20px rgba(124, 58, 237, 0.35);
+}
+
+.btn-speak:hover {
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+    transform: scale(1.03);
+    box-shadow: 0 8px 28px rgba(139, 92, 246, 0.5);
+}
+
+.btn-speak:active {
+    transform: scale(0.97);
+}
+
+/* ==========================================
+   TTS INPUT
+   ========================================== */
+
+.tts-input {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    padding: 12px 22px;
+    font-size: 13px;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.25s ease;
+    outline: none;
+    width: 100%;
+}
+
+.tts-input::placeholder {
+    color: rgba(148, 163, 184, 0.5);
+    font-size: 12px;
+}
+
+.tts-input:focus {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(167, 139, 250, 0.5);
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.12);
+}
+
+/* ==========================================
+   RESULT TEXT
+   ========================================== */
+
+.result-text, .result-text span {
+    background: linear-gradient(135deg, #f472b6 0%, #ec4899 50%, #f43f5e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.result-text .not-spotify {
+    background: none !important;
+    -webkit-text-fill-color: #475569 !important;
+    color: #475569;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+
+.footer-text {
+    font-size: 10px;
+    font-weight: 500;
+    color: #334155;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    line-height: 1.8;
+}
+
+/* ==========================================
+   SCROLLBAR
+   ========================================== */
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(167, 139, 250, 0.3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(167, 139, 250, 0.5); }
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+
+@media (max-width: 768px) {
+    .orb-1 { width: 300px; height: 300px; }
+    .orb-2 { width: 250px; height: 250px; }
+    .orb-3 { display: none; }
+}
